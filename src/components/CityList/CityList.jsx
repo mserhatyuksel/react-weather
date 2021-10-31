@@ -86,7 +86,7 @@ const options = [
     { value: "Düzce", label: "Düzce" },
 ];
 const CityList = () => {
-    return <Select options={options} />;
+    return <Select className={styles.list} options={options} />;
 };
 
 export default CityList;
