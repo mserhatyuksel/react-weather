@@ -1,4 +1,5 @@
-import React from "react";
+import { useContext } from "react";
+import CityContext from "../../context/city-context";
 import styles from "./CityList.module.css";
 import Select from "react-select";
 
@@ -86,7 +87,17 @@ const options = [
     { value: "Düzce", label: "Düzce" },
 ];
 const CityList = () => {
-    return <Select className={styles.list} options={options} onChange={(value)=>{console.log(value)}} />;
+    const ctx = useContext(CityContext);
+    return (
+        <Select
+            className={styles.list}
+            options={options}
+            value={{ value: ctx.city, label: ctx.city }}
+            onChange={(e) => {
+                ctx.setCity(e.value);
+            }}
+        />
+    );
 };
 
 export default CityList;
