@@ -86,7 +86,7 @@ const options = [
     { value: "Düzce", label: "Düzce" },
 ];
 const CityList = () => {
-    return <Select className={styles.list} options={options} />;
+    return <Select className={styles.list} options={options} onChange={(value)=>{console.log(value)}} />;
 };
 
 export default CityList;
