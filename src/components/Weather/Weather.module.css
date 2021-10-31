@@ -1,7 +1,7 @@
 .container{
   display: flex;
-  justify-content: space-between;
-  margin: 50px;
+  justify-content: center;
+  margin-top: 50px;
 }
 .weather{
   display: flex;
