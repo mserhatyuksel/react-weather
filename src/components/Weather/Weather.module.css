@@ -1,0 +1,35 @@
+.container{
+  display: flex;
+  justify-content: space-between;
+  margin: 50px;
+}
+.weather{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: 10px;
+}
+.day{
+  color: #C0C0C0;
+}
+.img{
+  width: 100px;
+}
+.current{
+  font-weight: bold;
+}
+.night{
+  color: #C6C6C6;
+  margin-left: 10px;
+}
+.today{
+  border: solid 1px #EDEDED;
+  background: #FCFCFC;
+}
+.desc{
+  font-weight: 300;
+  font-style: italic;
+  margin-top: 20px;
+}

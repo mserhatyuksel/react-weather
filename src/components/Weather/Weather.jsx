@@ -18,18 +18,61 @@ const Weather = () => {
             });
         });
     }, [ctx]);
+    const date = new Date();
+    const getToday = (index) => {
+        const days = [
+            "Pazar",
+            "Pazartesi",
+            "Salı",
+            "Çarşamba",
+            "Perşembe",
+            "Cuma",
+            "Cumartesi",
+        ];
+        if (index > 6) index = index - 7;
+        return days[index];
+    };
     return (
         <div>
-            {!isLoading && Math.round(data.current.temp)}
-            {!isLoading && data.current.weather[0].description}
-
-            <div>
+            <div className={styles.container}>
                 {!isLoading && (
-                    <img
-                        src={`https://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`}
-                        alt=""
-                    />
+                    <div className={`${styles.weather} ${styles.today}`}>
+                        <span className={styles.day}>Anlık Hava Durumu</span>
+                        <img
+                            className={styles.img}
+                            src={`https://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`}
+                            alt={data.current.weather[0].description}
+                        />
+                        <div className={styles.current}>
+                            {Math.round(data.current.temp)}&#8451;
+                        </div>
+                        <span className={styles.desc}>{data.current.weather[0].description}</span>
+                    </div>
                 )}
+                {!isLoading &&
+                    data.daily.map((day, i) => {
+                        return (
+                            <div className={styles.weather}>
+                                <span className={styles.day}>
+                                    {getToday(date.getDay() + i)}
+                                </span>
+                                <img
+                                    className={styles.img}
+                                    src={`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
+                                    alt={day.weather[0].description}
+                                />
+                                <div>
+                                <span className={styles.current}>
+                                    {Math.round(day.temp.day)}&#8451;
+                                </span>
+                                <span className={styles.night}>
+                                    {Math.round(day.temp.night)}&#8451;
+                                </span>
+                                </div>
+                                <span className={styles.desc}>{day.weather[0].description}</span>
+                            </div>
+                        );
+                    })}
             </div>
         </div>
     );
