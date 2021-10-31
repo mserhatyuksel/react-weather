@@ -1,3 +1,7 @@
+# Screenshot
+
+<img src="./public/home.png" width="500px">
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
