@@ -8,10 +8,10 @@ const Weather = () => {
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         axios(
-            `https://api.openweathermap.org/data/2.5/weather?q=${ctx.city}&appid=aa9a76ed3d5bb262a1e833e6738bbc42`
+            `https://api.openweathermap.org/data/2.5/weather?q=${ctx.city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
         ).then(({ data }) => {
             axios(
-                `https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=hourly,minutely&units=metric&lang=tr&appid=aa9a76ed3d5bb262a1e833e6738bbc42`
+                `https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=hourly,minutely&units=metric&lang=tr&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
             ).then(({ data }) => {
                 setData(data);
                 setIsLoading(false);
@@ -58,7 +58,7 @@ const Weather = () => {
 
             {data.daily.map((day, i) => {
                 return (
-                    <div className={styles.weather}>
+                    <div key={day.dt} className={styles.weather}>
                         <span className={styles.day}>
                             {getToday(date.getDay() + i)}
                         </span>
